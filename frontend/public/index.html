@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KYC Video Verification</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Identity Verification</h1>
+            <p>Complete your KYC video verification securely</p>
+        </div>
+
+        <div class="main-content">
+            <!-- Session Info -->
+            <div id="sessionInfo" class="session-info">
+                <div class="info-item">
+                    <span class="label">Session ID:</span>
+                    <span id="sessionId" class="value">Starting...</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Status:</span>
+                    <span id="sessionStatus" class="value status-active">Initializing</span>
+                </div>
+            </div>
+
+            <!-- Video Container -->
+            <div class="video-container">
+                <video id="webcam" class="video-element" autoplay></video>
+                <canvas id="overlay" class="overlay-canvas"></canvas>
+                
+                <!-- Loading spinner -->
+                <div id="loadingSpinner" class="loading-spinner">
+                    <div class="spinner"></div>
+                    <p>Initializing camera...</p>
+                </div>
+            </div>
+
+            <!-- Challenge Display -->
+            <div id="challengeBox" class="challenge-box hidden">
+                <h2 id="challengeTitle">Challenge</h2>
+                <p id="challengeInstruction" class="challenge-instruction"></p>
+                <div class="challenge-timer">
+                    <div id="timerBar" class="timer-bar"></div>
+                    <span id="timerText" class="timer-text">0s</span>
+                </div>
+                <div class="challenge-status">
+                    <span id="challengeStatus">Waiting for response...</span>
+                </div>
+            </div>
+
+            <!-- Analysis Results -->
+            <div id="analysisResults" class="analysis-results hidden">
+                <div class="results-row">
+                    <div class="result-item">
+                        <span class="result-label">Liveness Score</span>
+                        <div class="progress-bar">
+                            <div id="livenessBar" class="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <span id="livenessScore" class="result-value">0%</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Deepfake Detection</span>
+                        <div class="progress-bar">
+                            <div id="deepfakeBar" class="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <span id="deepfakeScore" class="result-value">0%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Face Detection Status -->
+            <div id="faceStatus" class="face-status">
+                <span id="faceDetectionText">No face detected</span>
+            </div>
+
+            <!-- Controls -->
+            <div class="controls">
+                <button id="startBtn" class="btn btn-primary">Start Verification</button>
+                <button id="nextChallengeBtn" class="btn btn-secondary hidden">Next Challenge</button>
+                <button id="submitBtn" class="btn btn-success hidden">Complete Verification</button>
+                <button id="cancelBtn" class="btn btn-danger">Cancel</button>
+            </div>
+
+            <!-- Messages -->
+            <div id="messages" class="messages"></div>
+        </div>
+
+        <!-- Verification Complete -->
+        <div id="resultScreen" class="result-screen hidden">
+            <div class="result-card" id="resultCard">
+                <h2 id="resultTitle">Verification Complete</h2>
+                <div id="resultContent"></div>
+                <button id="newVerificationBtn" class="btn btn-primary">Start New Verification</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="kyc-verification.js"></script>
+</body>
+</html>
